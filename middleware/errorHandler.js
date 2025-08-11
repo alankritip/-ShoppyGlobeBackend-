@@ -1,0 +1,5 @@
+// Central error handler to format errors
+module.exports = (err, req, res, next) => {
+  console.error(err);
+  res.status(err.status || 500).json({ message: err.message || "Server Error" });
+};
