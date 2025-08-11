@@ -12,7 +12,16 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// MongoDB Connect
+connectDB();
 
+// API Routes
+app.use('/products', productRoutes);
+app.use('/cart', cartRoutes);
+app.use('/', authRoutes);
+
+// Error Handler
+app.use(errorHandler);
 
 // Start Server
 const PORT = process.env.PORT || 3000;
