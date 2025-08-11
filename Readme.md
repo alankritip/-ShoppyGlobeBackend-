@@ -82,11 +82,11 @@
 
 ### Public Endpoints
 
-   * GET /products
+   #### GET /products
     * Returns an array of products.
     * 200 OK
 
-   * GET /products/:id
+   #### GET /products/:id
     * Returns a single product by MongoDB ObjectId.
     * 200 OK    
     * 400 Invalid productId format
@@ -94,13 +94,13 @@
 
 ## Authentication
 
-   * POST /register
+   #### POST /register
     * Body: { "username": "string", "password": "string" }
     * 201 User registered
     * 400 Missing fields
     * 409 Username already exists
 
-   * POST /login
+   #### POST /login
     * Body: { "username": "string", "password": "string" }
     * 200 { "token": "JWT_TOKEN" }
     * 401 Invalid credentials
@@ -109,21 +109,21 @@
 
    * Attach Authorization: Bearer <JWT_TOKEN> to all /cart requests.
 
-    * POST /cart
+    #### POST /cart
      * Body: { "productId": "<ObjectId>", "quantity": number }
      * 200 Updated cart object
      * 400 Missing/invalid body (e.g., quantity < 1) or invalid productId format
      * 401 Unauthorized (missing/invalid token)
      * 404 Product not found
      
-    * PUT /cart/:productId
+    #### PUT /cart/:productId
      * Body: { "quantity": number }
      * 200 Updated cart object
      * 400 quantity must be >= 1 or invalid productId format
      * 401 Unauthorized
      * 404 Product not in cart
      
-    * DELETE /cart/:productId
+    #### DELETE /cart/:productId
      * 200 Updated cart without that item
      * 400 Invalid productId format
      * 401 Unauthorized
@@ -132,15 +132,15 @@
 
    ### Centralized error handler returns JSON with message and appropriate HTTP status.
 
-   * Common responses:
-     * 400 Invalid productId format or bad request data
-     * 401 Authorization token required / Invalid or expired token
-     * 404 Product not found / Product not in cart
-     * 500 Server error (unexpected)
+   #### Common responses:
+   * 400 Invalid productId format or bad request data
+   * 401 Authorization token required / Invalid or expired token
+   * 404 Product not found / Product not in cart
+   * 500 Server error (unexpected)
 
    ### Testing with Thunder Client (VS Code)
 
-    * Create a Thunder Client collection and add:
+   #### Create a Thunder Client collection and add:
      * GET /products
      * GET /products/:id
      * POST /register
@@ -173,4 +173,4 @@
    * Check MONGODB_URI, ensure MongoDB is running, and network access is allowed.
 
 ## License
-  (MIT License)[https://choosealicense.com/licenses/mit/]
+  (MIT License) [https://choosealicense.com/licenses/mit/]
